@@ -1,5 +1,6 @@
 library(survival)
 library(ggplot2)
+library(grid)
 library(gridExtra)
 library(survminer)
 library(swimplot)
@@ -8,7 +9,7 @@ library(forestploter)
 
 # Reading cohort data in ####
 
-fcohort_ = read.delim(file = "../../Misc/fullcohort_cleaned.tsv", header = T, sep = '\t', quote = "", as.is = T, check.names = F, stringsAsFactors = F, na.strings = c('','NA','n/a','na'))
+fcohort_ = read.delim(file = "Misc/fullcohort_cleaned.tsv", header = T, sep = '\t', quote = "", as.is = T, check.names = F, stringsAsFactors = F, na.strings = c('','NA','n/a','na'))
 fcohort_$vital_status[!fcohort_$vital_status %in% 1] = 0      # event of interest is dead:1, the rest 0
 
 fcohort_$diagnosis_dt = as.Date(fcohort_$diagnosis_dt)
@@ -22,17 +23,27 @@ fcohort_$yrs_to_recurrance[is.na(fcohort_$yrs_to_recurrance)] = 100000
 
 fcohort_$yrs_to_recurrance_or_death = pmin(fcohort_$yrs_to_recurrance,fcohort_$yrs_to_last_followup)
 
+fcohort_$recur_status = pmax(fcohort_$recur, fcohort_$vital_status)
+
+# converting non-character variables to factors
+
+fcohort_$neoadjuvant = factor(fcohort_$neoadjuvant)                       # 0 (no) ref.
+fcohort_$stage = factor(fcohort_$stage)                                   # 2 ref.
+fcohort_$sex = factor(fcohort_$sex)                                       # F ref.
+fcohort_$grade = factor(fcohort_$grade)                                   # 1 ref.
+fcohort_$nodal_status = factor(fcohort_$nodal_status)                     # 0 (no) ref.
+fcohort_$adjuvant = factor(fcohort_$adjuvant)                             # 0 (no) ref.
+
 # Survival analysis by multivaiate Cox Proportional Hazards Regression Model ####
 
 # cohort dataset
-fcohort_$recur_status = pmax(fcohort_$recur, fcohort_$vital_status)
-dt_ = rbind(fcohort_[fcohort_$recur_site %in% "lung",],fcohort_[fcohort_$recur_site %in% "liver",])
+dt_ = fcohort_[fcohort_$recur_site %in% c("liver","lung"),]
 
 # create a survival object
 s_obj = Surv(dt_$yrs_to_recurrance_or_death, dt_$recur_status)
 
 # adjusted model
-fit_adj = coxph(s_obj ~ factor(recur_site) + factor(neoadjuvant) + age, data = dt_)
+fit_adj = coxph(s_obj ~ recur_site + neoadjuvant + age, data = dt_)
 s_adj = summary(fit_adj)
 
 # Forest plot ####

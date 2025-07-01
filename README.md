@@ -10,6 +10,7 @@ There is no specific installation guide other than installing common R or Python
 | dbscan                  | 1.2.0                  | anndata          | 0.11.1     |
 | doParallel              | 1.0.17                 | IPython          | 8.17.2     |
 | dplyr                   | 1.1.4                  | kneed            | 0.8.5      |
+| forestploter            | 1.1.3                  | kneed            | 0.8.5      |
 | ggplot2                 | 3.5.1                  | matplotlib       | 3.9.2      |
 | ggpubr                  | 0.6.0                  | matplotlib-inline | 0.1.6      |
 | ggrepel                 | 0.9.6                  | numpy            | 1.26.2     |
@@ -35,6 +36,7 @@ There is no specific installation guide other than installing common R or Python
 | statmod                 | 1.5.0                  |                  |            |
 | survival                | 3.8.3                  |                  |            |
 | survminer               | 0.5.0                  |                  |            |
+| swimplot                | 1.2.0                  |                  |            |
 | tidyr                   | 1.3.1                  |                  |            |
 | viridis                 | 0.6.5                  |                  |            |
 | xlsx                    | 0.6.5                  |                  |            |
@@ -44,21 +46,21 @@ There is no specific installation guide other than installing common R or Python
 **Instructions for Use**<br>
 
 To run each figure script:
-1. clone this GitHub repository  (https://github.com/IzarLab/PDAC_tropism.git) to your local disk space (like in Documnets).
+1. clone this GitHub repository  (https://github.com/IzarLab/PDAC_tropism.git) to a local directory (e.g., in Documents).
 2. download **compartments.zip** and **Misc.zip** from Gene Expression Omnibus cited in the paper.
-3. unzip them and move **Misc** and **compartments** to the directory (like **Documents/PDAC_tropism/**) containing **scripts**. Now this directory must contain three folders: **scripts**, **Misc** and **compartments**.
-4. open RStudio (or any other R-enabled IDE) and set **current directory**, `setwd()`, to **Documents/PDAC_tropism/**. Each **Fig_x** folder contains some R scripts corresponding to each figure panel within the paper.
+3. unzip them and move **Misc** and **compartments** to the directory (like **Documents/PDAC_tropism/**) containing **scripts**. This directory should now contain three folders: **scripts**, **Misc** and **compartments**.
+4. open RStudio (or any other R-enabled IDE) and set **working directory**, `setwd()`, to **Documents/PDAC_tropism/**. Each **Fig_x** subfolder contains R scripts corresponding to figure panel described in the paper.
 
-**Att.:**
-1. For generating Fig. 2c, download **PN14_S134_L002_tumor.cna.seg** and **PN14_S134_L002_tumor.seg** available on GEO lpWGS repository (accession number given in the paper), then run `ichorCNA` with the parameters given by **scripts/Fig_2/c.pdf**.
+**Notes:**
+1. For generating Fig. 2c, download **PN14_S134_L002_tumor.cna.seg** and **PN14_S134_L002_tumor.seg** available on GEO lpWGS repository (accession number given in the paper), then run `ichorCNA` with the parameters specified in **scripts/Fig_2/c.pdf**.
 2. To generate the circos plot (Fig. 4j) there are two ways.
    - **_Easy way_**:  
-     - open a Terminl session and change the directory to **scripts/Fig_4/**. Type in `jupyter notebook` and open **j.ipynb** from within a web browser (like Chrome).  
-     - install python packages listed in **j.ipynb**, **j.py** and also install _circos_ (https://circos.ca/).  
-     - run cells in **i.ipynb**. It should create **output** directory inside **Fig_4** with necessary files for generating circos plot as well as, probably, the circos plot. If the script throws _FileNotFoundError_, then open a new Terminal session, redirect it to **output** and type in `circos` that should generate **circos.svg** inside **output** folder.  
-   - **_Hard way_**: follow their instructions on ContactTracing's GitHub page (https://github.com/LaughneyLab/ContactTracing_tutorial) and replace their jupyter notebook (tutorial.ipynb) and python script (python/contactTracing_library.py) with **j.ipynb** and **j.py** respectively.
-3. For running Echidna, refer to their GitHub repository: https://github.com/azizilab/echidna
+     - open a Terminal session and change the directory to **scripts/Fig_4/**. Type in `jupyter notebook` and open **j.ipynb** in a web browser (e.g., Chrome).  
+     - install the Python packages listed in **j.ipynb**, **j.py**, and also install _circos_ (https://circos.ca/).  
+     - run cells in **j.ipynb**. This should create **output** subdirectory inside **Fig_4** with necessary files for generating circos plot, and possibly the plot itself. If the script throws _FileNotFoundError_, then open a new Terminal session, navigate to **output**, and type `circos` that should generate **circos.svg** in the **output** subfolder.  
+   - **_Hard way_**: follow the instructions on the ContactTracing GitHub page (https://github.com/LaughneyLab/ContactTracing_tutorial), and replace their jupyter notebook (tutorial.ipynb) and python script (python/contactTracing_library.py) with **j.ipynb** and **j.py** respectively.
+3. For running Echidna, please refer to their GitHub repository: https://github.com/azizilab/echidna
 
-The following video demo shows how to regenrate figure 1 as an example.<br><br>
+The following video demo shows how to reproduce Figure 1 as an example.<br><br>
 
 [![Video Thumbnail](https://img.youtube.com/vi/zvmdHKROiBA/0.jpg)](https://www.youtube.com/watch?v=zvmdHKROiBA)
