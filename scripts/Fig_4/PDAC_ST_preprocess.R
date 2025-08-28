@@ -189,7 +189,7 @@ DimPlot(object = pdac_, group.by = 'Histology')+
 DimPlot(object = pdac_, group.by = 'first_type')+
 DimPlot(object = pdac_, group.by = 'second_type')+
 DimPlot(object = pdac_, group.by = 'spot_class')
-ggsave(filename = 'Rplot_new.pdf', device = 'pdf', width = 15, height = 15, units = 'in')
+ggsave(filename = 'ST_TME.pdf', device = 'pdf', width = 15, height = 15, units = 'in')
 
 # STEP 6: Saving ST pdac data ####
 
