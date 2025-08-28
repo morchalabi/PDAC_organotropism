@@ -2,7 +2,7 @@
 # running RCTD for Visium V1&2: https://raw.githack.com/dmcable/spacexr/master/vignettes/visium_multi.html
 # running RCTD for Slide-seq: https://raw.githack.com/dmcable/spacexr/master/vignettes/spatial-transcriptomics.html
 # Inputs: scRNA-seq_Data_post_qc.rds (reference) and PDAC_Updated.rds (ST data) from https://zenodo.org/records/10712047
-# Output: deconv.RData and spatial_matched_PDAC_liver_lymphnode.rds. deconv.RData contains deconvoluted ST data, and 
+# Outputs: deconv.RData and spatial_matched_PDAC_liver_lymphnode.rds. deconv.RData contains deconvoluted ST data, and 
 #         spatial_matched_PDAC_liver_lymphnode.rds is input to scripts/Fig_4/b.R and scripts/ExtFig_3/d.R scripts.
 
 library(Matrix)
@@ -157,7 +157,6 @@ if(! file.exists('deconv.RData'))
   load('deconv.RData')
 }
 
-
 # STEP 5: Reading in ST data ####
 
 ## reading in ST data ####
@@ -186,7 +185,7 @@ pdac_@meta.data = cbind(pdac_@meta.data, rslt_)
 
 ## plotting results ####
 
-DimPlot(object = pdac_, group.by = 'Histology')+      # there are several umap reductions and this one is the default as the initial default assay was rctd_fullfinal! 
+DimPlot(object = pdac_, group.by = 'Histology')+
 DimPlot(object = pdac_, group.by = 'first_type')+
 DimPlot(object = pdac_, group.by = 'second_type')+
 DimPlot(object = pdac_, group.by = 'spot_class')
