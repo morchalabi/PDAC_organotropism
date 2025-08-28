@@ -86,7 +86,7 @@ if(! file.exists('deconv.RData'))
                         MAX_MULTI_TYPES = MAX_MULTI_TYPES,
                         CONFIDENCE_THRESHOLD = 5,         # default 5; minimum change in likelihood (compared to other cell types) necessary to determine a cell type identity with confidence
                         max_cores = 4)
-  deconv_ = run.RCTD(deconv_, doublet_mode = 'multi')     # running in multi mode may a few hours
+  deconv_ = run.RCTD(deconv_, doublet_mode = 'multi')     # running in multi mode may take a few hours
 
   # STEP 4: Filtering results ####
   # (1) in result slot of RCTD object there is an entry for each pixel (aka spot):
@@ -98,9 +98,9 @@ if(! file.exists('deconv.RData'))
   # (2) to comply with doublet mode format, cell type columns and spot class column in multi mode are standardized as follow:
         # (2.1) based on MAX_MULTI_TYPES = 4, there will be max 4 cell types on a spot and therefore 4 columns:
                 # first_type: gives the first cell type predicted on the spot
-                # second_type: gives the second cell type predicted on the bead for doublet spot_class conditions (not a confident prediction for “doublet_uncertain”)
-                # third_type: gives the second cell type predicted on the bead for doublet spot_class conditions (not a confident prediction for “doublet_uncertain”)
-                # four_type: gives the second cell type predicted on the bead for doublet spot_class conditions (not a confident prediction for “doublet_uncertain”)
+                # second_type: gives the second cell type predicted on the spot
+                # third_type: gives the third cell type predicted on the spot
+                # fourth_type: gives the fourth cell type predicted on the spot
         # (2.2) spot class is a factor column representing RCTD’s classification in multi mode:
                 # reject: no confident cell type
                 # singlet: 1 cell type on pixel (spot); uncertain singlet is the same as reject
