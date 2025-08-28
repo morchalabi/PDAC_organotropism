@@ -4,6 +4,9 @@
 # Inputs: scRNA-seq_Data_post_qc.rds (reference) and PDAC_Updated.rds (ST data) from https://zenodo.org/records/10712047
 # Outputs: deconv.RData and spatial_matched_PDAC_liver_lymphnode.rds. deconv.RData contains deconvoluted ST data, and 
 #         spatial_matched_PDAC_liver_lymphnode.rds is input to scripts/Fig_4/b.R and scripts/ExtFig_3/d.R scripts.
+#
+# Att.: I ran RCTD in doublet mode for Fig_4/b.R and ExtFig_3/d.R, while here I run it in multi mode. The result of PDAC recurrence
+# signature enrichment in doublet mode is better than multi mode (see Fig. 4b and ExtFig. 3d). In general, RCTD works best in doublet mode.
 
 library(Matrix)
 library(MatrixGenerics)
