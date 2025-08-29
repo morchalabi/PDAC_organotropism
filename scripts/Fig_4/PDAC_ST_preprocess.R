@@ -31,7 +31,7 @@ if(! file.exists('deconv.RData'))
   
   ## creating reference object ####
   
-  # Reference needs max 1e4 cells per type; you can make a sure only cells with high nCount_RNA are included
+  # reference needs max 1e4 cells per type (cells with high nCount_RNA should be included)
   ref_ = Reference(counts = panc_[['RNA']]@counts,
                    cell_types = Idents(panc_),
                    nUMI = panc_$nCount_RNA,      # == colSums(panc_[[RNA]]@counts)
