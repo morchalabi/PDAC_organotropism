@@ -1072,7 +1072,9 @@ def make_circos_plot(interactions,
 #    f = (lf1) & (rf1)
 
  #   labelsReceptor = links.loc[f,['parent_x', 'start_x', 'end_x', 'label_x']]
+    # Mori part______
     labelsReceptor = links[['parent_x', 'start_x', 'end_x', 'label_x']].rename(columns={'parent_x':'parent','start_x':'start','end_x':'end','label_x':'label'})
+    #_________________
     labelsReceptor['color'] = 'color=greys-9-seq-6'
     if boldReceptor:
         if boldCellType is not None:
@@ -1124,7 +1126,7 @@ def make_circos_plot(interactions,
         maxDEG = max_numSigI1
 
     # links['thickness'] = (links[f'{numSigI1_stat}_x']/maxDEG*max_thickness+1).apply(np.int64)
-    # mine part______
+    # Mori part______
     links['thickness'] = abs(links['log2FC_y'])
     min_value, max_value = links['thickness'].agg(['min', 'max'])
     links['thickness'] = (links['thickness'] - min_value) / (max_value - min_value) * (20 - 1) + 1
