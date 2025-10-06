@@ -64,3 +64,14 @@ To run each figure script:
 The following video demo shows how to reproduce Figure 1 as an example.<br><br>
 
 [![Video Thumbnail](https://img.youtube.com/vi/zvmdHKROiBA/0.jpg)](https://www.youtube.com/watch?v=zvmdHKROiBA)
+
+___
+
+# DeepPDAC
+Deep learning predictive model trained on the TME of primary PDACs with recurrence to the liver or non-liver sites.
+
+This model, implemented in R and Python (rpy), predicts whether a patient’s single-cell transcriptomic profile is likely to recur in the liver. To read more check out its [repository](https://github.com/morchalabi/DeepPDAC/tree/main).
+<p align="left">
+  <img src="https://github.com/morchalabi/DeepPDAC/blob/main/data/DeepPDAC.png" alt="Model Schema" width="700"/>
+</p>
+
