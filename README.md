@@ -46,7 +46,7 @@ There is no specific installation guide other than installing common R or Python
 **Instructions for Use**<br>
 
 To run each figure script:
-1. clone this GitHub repository  (https://github.com/IzarLab/PDAC_tropism.git) to a local directory (e.g., in Documents).
+1. clone this GitHub repository:(https://github.com/morchalabi/PDAC_organotropism.git) to a local directory (e.g., in Documents).
 2. download **compartments.zip** and **Misc.zip** from Gene Expression Omnibus cited in the paper.
 3. unzip them and move **Misc** and **compartments** to the directory (like **Documents/PDAC_tropism/**) containing **scripts**. This directory should now contain three folders: **scripts**, **Misc** and **compartments**.
 4. open RStudio (or any other R-enabled IDE) and set **working directory**, `setwd()`, to **Documents/PDAC_tropism/**. Each **Fig_x** subfolder contains R scripts corresponding to figure panel described in the paper.
